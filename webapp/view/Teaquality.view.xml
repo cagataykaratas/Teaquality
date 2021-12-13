@@ -1,0 +1,261 @@
+<mvc:View
+    controllerName="teaquality.controller.Teaquality"
+    xmlns:mvc="sap.ui.core.mvc"
+	xmlns:dnd="sap.ui.core.dnd"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<Panel headerText="Form" width="auto" class="sapUiResponsiveMargin" expandable="true">
+						<content>
+							<sap.ui.layout.form:Form xmlns:sap.ui.layout.form="sap.ui.layout.form" editable="true" id="__form1">
+								<sap.ui.layout.form:formContainers>
+									<sap.ui.layout.form:FormContainer id="__container1">
+										<sap.ui.layout.form:formElements>
+
+											<sap.ui.layout.form:FormElement label="T.C." id="elementTc">
+												<sap.ui.layout.form:fields>
+													<Input width="25%" id="tc" valueLiveUpdate="true"/>
+												</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+
+											<sap.ui.layout.form:FormElement label="Ad" id="elementAd">
+												<sap.ui.layout.form:fields>
+													<Input width="25%" valueLiveUpdate="true" id="ad"/>
+												</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+
+											<sap.ui.layout.form:FormElement label="Soyad" id="elementSoyad">
+												<sap.ui.layout.form:fields>
+													<Input width="25%" valueLiveUpdate="true" id="soyad"/>
+												</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+											
+											<sap.ui.layout.form:FormElement label="Position" id="elementPosition">
+												<sap.ui.layout.form:fields>
+												<VBox width="100%">
+													<InputListItem>
+														<SegmentedButton id="position">
+															<items>
+																<SegmentedButtonItem text="Goalkeeper" key="GoalKeeper"/>
+																<SegmentedButtonItem text="Defender" key="Defender"/>
+																<SegmentedButtonItem text="Middlifier" key="Middlifier"/>
+																<SegmentedButtonItem text="Forward" key="Forward"/>
+															</items>
+														</SegmentedButton>
+													</InputListItem>
+												</VBox>
+												</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+
+											<sap.ui.layout.form:FormElement label="Rank" id="elementRank">
+												<sap.ui.layout.form:fields>
+													<RatingIndicator id="rank" maxValue="5" class="sapUiSmallMarginBottom" tooltip="Rating Tooltip" />
+												</sap.ui.layout.form:fields>
+											</sap.ui.layout.form:FormElement>
+
+										</sap.ui.layout.form:formElements>
+									</sap.ui.layout.form:FormContainer>
+								</sap.ui.layout.form:formContainers>
+
+								<sap.ui.layout.form:layout>
+								<sap.ui.layout.form:ResponsiveGridLayout id="__layout1"/>
+								</sap.ui.layout.form:layout>
+
+							</sap.ui.layout.form:Form>
+						</content>
+						<Toolbar height="3rem">
+						<Button icon="sap-icon://add" text="Add" type="Emphasized" press="onAdd" class="sapUiResponsiveMargin"/></Toolbar>
+					</Panel>
+
+					<Panel headerText="Records" width="auto" class="sapUiResponsiveMargin" expandable="true">
+						<headerToolbar>
+							<Toolbar height="3rem">
+								<Title text="Records"/>
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://sys-minus" text="Delete Row" type="Reject" press="onDelete" class="sapUiLargeMarginEnd"/>
+							</Toolbar>
+						</headerToolbar>
+						<content>
+							<Table id="records" items="{/data}" growing="true" width="75%" mode="MultiSelect">
+								<items>
+									<ColumnListItem id="itemlist">
+										<cells>
+											<Text text="{Tc}" id="Tc"/>
+											<Text text="{Ad}" id="Ad"/>
+											<Text text="{Soyad}" id="Soyad"/>
+											<Text text="{Position}" id="Position"/>
+											<Text text="{Rank}" id="Rank"/>
+										</cells>	
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="tck">
+										<header>
+											<Label text="Tc" id="headTc"/>
+										</header>
+									</Column>
+									<Column id="name">
+										<header>
+											<Label text="Ad" id="headAd"/>
+										</header>
+									</Column>
+									<Column id="surname">
+										<header>
+											<Label text="Soyad" id="headSoyad"/>
+										</header>
+									</Column>
+									<Column id="positions">
+										<header>
+											<Label text="Position" id="headPosition"/>
+										</header>
+									</Column>
+									<Column id="ranking">
+										<header>
+											<Label text="Rank" id="headRank"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</content>
+						<Toolbar height="3rem">
+						<Button text="Mix" type="Emphasized" press="onMix" class="sapUiResponsiveMargin"/></Toolbar>
+					</Panel>
+				
+					<Panel headerText="TEAMS" expandable="true" width="auto" class="sapUiResponsiveMargin">
+						<HBox>
+							<Table headerText="TeamA" id="table1" items="{/playersA}" growing="true" width="100%" mode="MultiSelect">
+								<items>
+									<ColumnListItem id="itemlist2">
+										<cells>
+											<Text text="{Ad}" id="Ad2"/>
+											<Text text="{Soyad}" id="Soyad2"/>
+											<Text text="{Position}" id="Position2"/>
+											<Text text="{Rank}" id="Rank2"/>
+										</cells>	
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="name2">
+										<header>
+											<Label text="Ad" id="headAd2"/>
+										</header>
+									</Column>
+									<Column id="surname2">
+										<header>
+											<Label text="Soyad" id="headSoyad2"/>
+										</header>
+									</Column>
+									<Column id="positions2"  width="30%">
+										<header>
+											<Label text="Position" id="headPosition2"/>
+										</header>
+									</Column>
+									<Column id="ranking2">
+										<header>
+											<Label text="Rank" id="headRank2"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							
+							<VBox justifyContent="Center" class="sapUiMediumMarginEnd sapUiLargeMarginTop sapUiMediumMarginBegin">
+								<Button
+									text="A"
+									tooltip="Move to selected"
+									press="moveToTable1"/>
+									
+								<Button
+									text="Players"
+									tooltip="Move to selected"
+									press="moveToPlayers"/>
+							</VBox>
+							<Table headerText="Players" id="players" items="{/data}" growing="true" width="100%" mode="MultiSelect">
+								<items>
+									<ColumnListItem id="itemlist4">
+										<cells>
+											<Text text="{Ad}" id="Ad4"/>
+											<Text text="{Soyad}" id="Soyad4"/>
+											<Text text="{Position}" id="Position4"/>
+											<Text text="{Rank}" id="Rank4"/>
+										</cells>	
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="name4">
+										<header>
+											<Label text="Ad" id="headAd4"/>
+										</header>
+									</Column>
+									<Column id="surname4">
+										<header>
+											<Label text="Soyad" id="headSoyad4"/>
+										</header>
+									</Column>
+									<Column id="positions4"  width="30%">
+										<header>
+											<Label text="Position" id="headPosition4"/>
+										</header>
+									</Column>
+									<Column id="ranking4">
+										<header>
+											<Label text="Rank" id="headRank4"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+							<VBox justifyContent="Center" class="sapUiMediumMarginEnd sapUiLargeMarginTop sapUiMediumMarginBegin">
+								<Button
+									text="B"
+									tooltip="Move to selected"
+									press="moveToTable2"/>
+
+								<Button
+									text="Players"
+									tooltip="Move to selected"
+									press="moveToPlayers2"/>
+							</VBox>
+							<Table headerText="TeamB" id="table2" items="{/playersB}" growing="true" width="100%" mode="MultiSelect">
+								<items>
+									<ColumnListItem id="itemlist3">
+										<cells>
+											<Text text="{Ad}" id="Ad3"/>
+											<Text text="{Soyad}" id="Soyad3"/>
+											<Text text="{Position}" id="Position3"/>
+											<Text text="{Rank}" id="Ranks3"/>
+										</cells>	
+									</ColumnListItem>
+								</items>
+								<columns>
+									<Column id="name3">
+										<header>
+											<Label text="Ad" id="headAd3"/>
+										</header>
+									</Column>
+									<Column id="surname3">
+										<header>
+											<Label text="Soyad" id="headSoyad3"/>
+										</header>
+									</Column>
+									<Column id="positions3"  width="30%">
+										<header>
+											<Label text="Position" id="headPosition3"/>
+										</header>
+									</Column>
+									<Column id="ranking3">
+										<header>
+											<Label text="Rank" id="headRank3"/>
+										</header>
+									</Column>
+								</columns>
+							</Table>
+						</HBox>
+					</Panel>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
